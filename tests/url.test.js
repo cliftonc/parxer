@@ -9,7 +9,7 @@ var fs = require('fs');
 describe("Url parsing", function () {
 
     it('should parse url attributes', function (done) {
-        var input = "<html><div id='url' cx-url='{{server:name}}'>I am some default text</div></html>";
+        var input = "<html><div id='url' cx-url='${server:name}'>I am some default text</div></html>";
         parxer({
             plugins: [
                 require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
@@ -25,7 +25,7 @@ describe("Url parsing", function () {
     });
 
     it('should parse url attributes and replace complex default html as well as text', function (done) {
-        var input = "<html><div id='url' cx-url='{{server:name}}'><!-- comment --><h1>I am some default text</h1><span>Hello</span></div></html>";
+        var input = "<html><div id='url' cx-url='${server:name}'><!-- comment --><h1>I am some default text</h1><span>Hello</span></div></html>";
         parxer({
             plugins: [
                 require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
@@ -41,7 +41,7 @@ describe("Url parsing", function () {
     });
 
     it('should parse a mixture of attributes in a bigger document', function (done) {
-        var input = "<html><div id='test' cx-test='{{environment:name}}'></div><div id='url' cx-url='{{server:name}}'>I am some default text</div></html>";
+        var input = "<html><div id='test' cx-test='${environment:name}'></div><div id='url' cx-url='${server:name}'>I am some default text</div></html>";
         parxer({
             plugins: [
                 require('../Plugins').Test,
@@ -60,7 +60,7 @@ describe("Url parsing", function () {
     });
 
     it('should allow you to define your own prefix', function (done) {
-        var input = "<html><div id='url' data-my-url='{{server:name}}'></div></html>";
+        var input = "<html><div id='url' data-my-url='${server:name}'></div></html>";
         parxer({
             prefix: 'data-my-',
             plugins: [
@@ -77,7 +77,7 @@ describe("Url parsing", function () {
     });
 
     it('should deal with managing overall timeout', function (done) {
-        var input = "<html><div id='url' cx-url='{{server:name}}'></div></html>";
+        var input = "<html><div id='url' cx-url='${server:name}'></div></html>";
         parxer({
             parserTimeout: 20,
             plugins: [
@@ -94,7 +94,7 @@ describe("Url parsing", function () {
     });
 
     it('should deal with a service that returns an error', function (done) {
-        var input = "<html><div id='url' cx-url='{{server:name}}'>Default Content</div></html>";
+        var input = "<html><div id='url' cx-url='${server:name}'>Default Content</div></html>";
         parxer({
             timeout: 100,
             showErrors: true,
@@ -112,7 +112,7 @@ describe("Url parsing", function () {
     });
 
     it('should replace outer when specified with url', function (done) {
-        var input = "<html><div id='url'><div cx-replace-outer='true' cx-url='{{server:name}}'>I am some default text</div></div></html>";
+        var input = "<html><div id='url'><div cx-replace-outer='true' cx-url='${server:name}'>I am some default text</div></div></html>";
         parxer({
             plugins: [
                 require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
@@ -128,7 +128,7 @@ describe("Url parsing", function () {
     });
 
     it('should replace outer when specified with url (with custom tag)', function (done) {
-        var input = "<html><div id='url'><compoxure cx-url='{{server:name}}'>I am some default text</compoxure></div></html>";
+        var input = "<html><div id='url'><compoxure cx-url='${server:name}'>I am some default text</compoxure></div></html>";
         parxer({
             plugins: [
                 require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
@@ -144,7 +144,7 @@ describe("Url parsing", function () {
     });
 
     it('should deal with a service that returns an error but show default text if configured to', function (done) {
-        var input = "<html><div id='url' cx-url='{{server:name}}'><h1>Default Content</h1><span>More content</span></div></html>";
+        var input = "<html><div id='url' cx-url='${server:name}'><h1>Default Content</h1><span>More content</span></div></html>";
         parxer({
             timeout: 100,
             showErrors: false,
@@ -162,7 +162,7 @@ describe("Url parsing", function () {
     });
 
     it('should deal with a service that returns an error but show default html if configured to', function (done) {
-        var input = "<html><div id='url' cx-url='{{server:name}}'><h1>HTML</h1><div>Hello</div></div></html>";
+        var input = "<html><div id='url' cx-url='${server:name}'><h1>HTML</h1><div>Hello</div></div></html>";
         parxer({
             timeout: 100,
             showErrors: false,
@@ -181,7 +181,7 @@ describe("Url parsing", function () {
     });
 
     it('should deal with a service that returns an error but show default html if configured to and replace outer', function (done) {
-        var input = "<html><div id='wrapper'><div id='url' cx-replace-outer='true' cx-url='{{server:name}}'><h1>HTML</h1><div>Hello</div></div></div></html>";
+        var input = "<html><div id='wrapper'><div id='url' cx-replace-outer='true' cx-url='${server:name}'><h1>HTML</h1><div>Hello</div></div></div></html>";
         parxer({
             timeout: 100,
             showErrors: false,
@@ -200,7 +200,7 @@ describe("Url parsing", function () {
     });
 
     it('should deal with a service that returns an error but show default html if configured to and survive malformed html', function (done) {
-        var input = "<html><div id='wrapper'><div id='url' cx-replace-outer='true' cx-url='{{server:name}}'><h1>HTML<div>Hello</div></div></html>";
+        var input = "<html><div id='wrapper'><div id='url' cx-replace-outer='true' cx-url='${server:name}'><h1>HTML<div>Hello</div></div></html>";
         parxer({
             timeout: 100,
             showErrors: false,
@@ -218,7 +218,7 @@ describe("Url parsing", function () {
     });
 
     it('should return stats about the fragments in the page', function (done) {
-        var input = "<html><div id='url' cx-url='{{server:name}}'>I am some default text</div></html>";
+        var input = "<html><div id='url' cx-url='${server:name}'>I am some default text</div></html>";
         parxer({
             plugins: [
                 require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
@@ -234,7 +234,7 @@ describe("Url parsing", function () {
 
     describe('cx-strategy', function () {
         it('should parse url attributes and return the first one', function (done) {
-            var input = "<html><div id='url' cx-url-1='{{server:name}}' cx-url-2='{{server:name2}}' cx-strategy='first-non-empty'>I am some default text</div></html>";
+            var input = "<html><div id='url' cx-url-1='${server:name}' cx-url-2='${server:name2}' cx-strategy='first-non-empty'>I am some default text</div></html>";
             parxer({
                 plugins: [
                     require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
@@ -251,7 +251,7 @@ describe("Url parsing", function () {
         });
 
         it('should parse url attributes and return all of them', function (done) {
-            var input = "<html><div id='url' cx-url-1='{{server:name}}' cx-url-2='{{server:name2}}'>I am some default text</div></html>";
+            var input = "<html><div id='url' cx-url-1='${server:name}' cx-url-2='${server:name2}'>I am some default text</div></html>";
             parxer({
                 plugins: [
                     require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
@@ -268,7 +268,7 @@ describe("Url parsing", function () {
         });
 
         it('should parse url attributes and return all them (2)', function (done) {
-            var input = "<html><div id='url' cx-url-1='{{server:name}}' cx-url-2='{{server:name2}}' cx-strategy='first-non-empty'>I am some default text</div></html>";
+            var input = "<html><div id='url' cx-url-1='${server:name}' cx-url-2='${server:name2}' cx-strategy='first-non-empty'>I am some default text</div></html>";
             var contents = {
                 'http://www.abc.com': ' ',
                 'http://www.def.com': 'it works!',
@@ -289,7 +289,7 @@ describe("Url parsing", function () {
         });
 
         it('should parse url attributes and return the first non empty (we consider space to be empty)', function (done) {
-            var input = "<html><div id='url' cx-url-1='{{server:name}}' cx-url-2='{{server:name2}}'>I am some default text</div></html>";
+            var input = "<html><div id='url' cx-url-1='${server:name}' cx-url-2='${server:name2}'>I am some default text</div></html>";
             var contents = {
                 'http://www.abc.com': ' ',
                 'http://www.def.com': 'it works!',

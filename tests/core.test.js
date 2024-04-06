@@ -26,7 +26,7 @@ describe("Core html parsing", function() {
   });
 
   it('should parse test attributes', function(done) {
-      var input = "<html><div id='test' cx-test='{{environment:name}}'></div></html>";
+      var input = "<html><div id='test' cx-test='${environment:name}'></div></html>";
       parxer({
         plugins: [
           require('../Plugins').Test
