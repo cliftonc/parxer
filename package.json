@@ -1,5 +1,5 @@
 {
-  "name": "parxer",
+  "name": "pxr",
   "version": "4.2.0",
   "description": "HTML transformation library built on top of HTMLParser2, used by Compoxure.",
   "main": "index.js",
@@ -15,12 +15,12 @@
     "composition",
     "proxy"
   ],
-  "author": "TES Global",
+  "author": "Clifton Cunningham",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tes/parxer/issues"
+    "url": "https://github.com/cliftonc/pxr/issues"
   },
-  "homepage": "https://github.com/tes/parxer",
+  "homepage": "https://github.com/cliftonc/pxr",
   "dependencies": {
     "async": "^0.9.0",
     "handlebars": "^4.1.2",
