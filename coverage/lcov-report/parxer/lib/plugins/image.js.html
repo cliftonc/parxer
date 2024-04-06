@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for parxer/lib/plugins/image.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">parxer/lib/plugins/</a> image.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.56% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>40/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.75% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>15/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.56% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>40/41</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+var Core = require('../core');
+var _ = require('lodash');
+var attr = require('../attr');
+&nbsp;
+module.exports = function() {
+&nbsp;
+  var parsedAttribs = ['src'];
+  var rawSuffix = '-raw';
+&nbsp;
+  /*
+    Core cx-src handling function
+    responds to cx-src="service-name/image.png" declarations
+  */
+  function matchImages(tagname, attribs, config, state) {
+    var imageSrcAttr = attr.getAttr(config.prefix + 'src', attribs);
+    var imageSrcRawAttr = imageSrcAttr + rawSuffix;
+    var clientHintAttr = attr.getAttr(config.prefix + 'client-hint', attribs);
+&nbsp;
+    if (!imageSrcAttr) {
+      return false;
+    }
+&nbsp;
+    // If we have no cdn then drop the parsing of the image
+    if (!config.cdn || !config.cdn.url) {
+      return false;
+    }
+&nbsp;
+    var imageName = Core.render(attribs[imageSrcAttr].toString(), config.variables);
+&nbsp;
+    // Silently drop any without the / delimiter, now required
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(imageName.indexOf('/') &lt; 0) {
+<span class="cstat-no" title="statement not covered" >      return false;</span>
+    }
+&nbsp;
+    var splitBundle = imageName.split('/');
+    var image = {
+      service: splitBundle[0],
+      name: splitBundle[1]
+    };
+&nbsp;
+    var baseUrl = config.cdn.url;
+&nbsp;
+    // Allow for more complex resolution of the CDN url via a resolver function that takes in the service name
+    var resolvedBaseUrl = config.cdn.resolver &amp;&amp; config.cdn.resolver(image.service);
+    if (resolvedBaseUrl) {
+      baseUrl = resolvedBaseUrl;
+    }
+&nbsp;
+    var imageAttribs = _.clone(attribs);
+&nbsp;
+    // Create an image key that will be used to determine which version will be used for the image url
+    // This will just be the service name
+    var imageKey = image.service;
+&nbsp;
+    // Create a mustache template that will show an ugly error if we cannot figure out which version will be used to create the image
+    var bundleVersion = '{{^static:' + imageKey + '}}YOU_SPECIFIED_AN_IMAGE_THAT_ISNT_AVAILABLE_TO_THIS_PAGE{{/static:' + imageKey + '}}{{#static:' + imageKey + '}}{{static:' + imageKey + '}}{{/static:' + imageKey + '}}';
+    var directAssetUrl = baseUrl + image.service + '/' + bundleVersion + '/img/' + image.name;
+&nbsp;
+    imageAttribs[imageSrcRawAttr] = imageAttribs[imageSrcAttr];
+    delete imageAttribs[imageSrcAttr];
+&nbsp;
+    // Dont close a tag since the new image element will always replace the outer element
+    state.setSkipClosingTag(tagname);
+&nbsp;
+    // Add the new image to the deferred stack to be processed once all config variables have been defined
+    Core.pushFragment(tagname, imageAttribs, state, true, function(fragment, next) {
+      imageAttribs.src = Core.prepareURL(Core.render(directAssetUrl, config.variables), config.baseURL);
+      state.setStatistic('images', imageName, imageAttribs);
+&nbsp;
+      if (clientHintAttr) {
+        imageAttribs.rel = imageAttribs.rel || 'preload';
+        next(null, Core.getClientHintTag(imageAttribs.src, imageAttribs));
+      } else {
+        next(null, Core.createTag(tagname, imageAttribs));
+      }
+    });
+&nbsp;
+    return true;
+  }
+&nbsp;
+  function match(tagname, attribs, config, state) {
+    return matchImages(tagname, attribs, config, state);
+  }
+&nbsp;
+  return {
+    name:'image',
+    match: match,
+    parsedAttribs: parsedAttribs
+  };
+&nbsp;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Apr 06 2024 09:26:45 GMT+0200 (Central European Summer Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

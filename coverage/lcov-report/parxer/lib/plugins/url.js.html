@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for parxer/lib/plugins/url.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">parxer/lib/plugins/</a> url.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.8% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>56/61</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>15/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>14/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.67% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>55/60</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">66×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+var Core = require('../core');
+var attr = require('../attr');
+var _ = require('lodash');
+var async = require('async');
+&nbsp;
+var strategyDict = {
+  default: function (contents) {
+    return contents.join('');
+  },
+  'first-non-empty': function (contents, keys) {
+    var sortedContents = _.sortBy(_.zip(keys, contents), function (keyValue) { return keyValue[0]; })
+      .map(function (keyValue) {
+        return keyValue[1];
+      });
+    return _.find(sortedContents, function (content) {
+      return _.trim(content);
+    });
+  },
+  random: <span class="fstat-no" title="function not covered" >function (contents) {</span>
+<span class="cstat-no" title="statement not covered" >    return _.sample(contents);</span>
+  }
+};
+&nbsp;
+module.exports = function (handler) {
+&nbsp;
+  var parsedAttribs = ['url', 'cache-key', 'no-cache'];
+&nbsp;
+  /*
+    Core cx-url handling function
+    responds to cx-url="{{server:name}}/path" declarations
+  */
+  function matchUrl(tagname, attribs, config, state) {
+    var urlAttrCompleted = attr.getAttr(config.prefix + 'url-done', attribs);
+    var replaceOuterAttr = attr.getAttr(config.prefix + 'replace-outer', attribs);
+    var strategyAttr = attr.getAttr(config.prefix + 'strategy', attribs);
+    var strategyName = attribs[strategyAttr] || 'default';
+    var strategyFunction = strategyDict[strategyName] || <span class="branch-1 cbranch-no" title="branch not covered" >strategyDict.default;</span>
+&nbsp;
+    var urlAttributes = attr.getAttrStartingWith(config.prefix + 'url', attribs); // cx-url-1 cx-url-keyx etc.
+    var urlAttributeSuffixes = attr.getSuffixes(urlAttributes, config.prefix + 'url'); // -1 -keyx etc.
+&nbsp;
+    if (!urlAttributes.length || urlAttrCompleted) {
+      return false;
+    }
+&nbsp;
+    var urlAttributeNamesList = urlAttributeSuffixes.map(function (suffix) {
+      return {
+        urlAttr: attr.getAttr(config.prefix + 'url' + suffix, attribs),
+        cacheKeyAttr: attr.getAttr(config.prefix + 'cache-key' + suffix, attribs),
+        timeoutAttr: attr.getAttr(config.prefix + 'timeout' + suffix, attribs),
+        ttlAttr: attr.getAttr(config.prefix + 'cache-ttl' + suffix, attribs),
+        noCacheAttr: attr.getAttr(config.prefix + 'no-cache' + suffix, attribs)
+      };
+    });
+&nbsp;
+    var validAttribs = _.flatten(urlAttributeSuffixes.map(function (suffix) {
+      return parsedAttribs.map(function (attrib) {
+        return attrib + suffix;
+      });
+    }));
+&nbsp;
+    attribs = attr.parseAttribs(validAttribs, attribs, config);
+    if (replaceOuterAttr || Core.isCxCustomTag(tagname)) {
+      state.setSkipClosingTag(tagname);
+    } else {
+      attribs[config.prefix + 'url-done'] = true;
+      state.setOutput(Core.createTag(tagname, attribs));
+    }
+&nbsp;
+    Core.pushFragment(tagname, attribs, state, null, function (fragment, next) {
+      var fragments = urlAttributeNamesList.map(function (urlAttributeNames) {
+        var url = fragment.attribs[urlAttributeNames.urlAttr];
+        var urlRaw = fragment.attribs[urlAttributeNames.urlAttr + '-raw'];
+        var cacheKey = fragment.attribs[urlAttributeNames.cacheKeyAttr];
+        var timeout = fragment.attribs[urlAttributeNames.timeoutyAttr];
+        var ttl = fragment.attribs[urlAttributeNames.ttlAttr];
+        var noCache = fragment.attribs[urlAttributeNames.noCacheAttr];
+        var newAttribs = { 'cx-url': url, 'cx-url-raw': urlRaw };
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (cacheKey) {
+<span class="cstat-no" title="statement not covered" >          newAttribs['cx-cache-key'] = cacheKey;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (timeout) {
+<span class="cstat-no" title="statement not covered" >          newAttribs['cx-timeout'] = timeout;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (ttl) {
+<span class="cstat-no" title="statement not covered" >          newAttribs['cx-ttl'] = ttl;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (noCache) {
+<span class="cstat-no" title="statement not covered" >          newAttribs['cx-no-cache'] = noCache;</span>
+        }
+        var attribs = _.assign({}, fragment.attribs, newAttribs);
+        return _.assign({}, fragment, { attribs: attribs });
+      });
+&nbsp;
+      async.map(fragments, handler, function (err, contents) {
+        var content = strategyFunction(contents, urlAttributeSuffixes);
+        next(err, content);
+      });
+    });
+&nbsp;
+    state.setStatistic('fragments', attribs['cx-url'], { attribs: attribs });
+    return true;
+  }
+&nbsp;
+  function match(tagname, attribs, config, state) {
+    return matchUrl(tagname, attribs, config, state);
+  }
+&nbsp;
+  return {
+    name: 'url',
+    match: match,
+    parsedAttribs: parsedAttribs
+  };
+&nbsp;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Apr 06 2024 09:26:45 GMT+0200 (Central European Summer Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

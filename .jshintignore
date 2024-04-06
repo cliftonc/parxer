@@ -1,0 +1,5 @@
+node_modules
+tests
+src/client
+coverage
+lib/hogan.js
