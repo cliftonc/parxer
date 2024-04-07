@@ -1,18 +1,21 @@
 'use strict';
 
-var expect = require('expect.js');
-var parxer = require('..').parxer;
-var render = require('..').render;
-var cheerio = require('cheerio');
-var fs = require('fs');
+import expect from 'expect.js';
+import pxr from '../index.js';
+import cheerio from 'cheerio';
+import fs from 'fs';
+import Plugins from '../Plugins.js';
 
 describe("If logic plugin", function() {
+
+  const parxer = pxr.parxer;
+  const render = pxr.render;
 
   it('should parse if attributes and retain block if true', function(done) {
       var input = "<html><div id='if' cx-if='${server:name}' cx-if-value='http://www.google.com'><h1>Hello</h1><span id='stillhere'>Rah!</span></div></html>";
       parxer({
         plugins: [
-          require('../Plugins').If
+          Plugins.If
         ],
       variables: {
         'environment:name':'test',
@@ -28,7 +31,7 @@ describe("If logic plugin", function() {
       var input = "<html><div id='if' cx-if='${server:name}' cx-if-value='http://www.tes.com'><h1>Hello</h1><span id='stillhere'>Rah!</span></div></html>";
       parxer({
         plugins: [
-          require('../Plugins').If
+          Plugins.If
         ],
       variables: {
         'environment:name':'test',
@@ -45,7 +48,7 @@ describe("If logic plugin", function() {
       var input = "<html><div id='if' cx-replace-outer='true' cx-if='${environment:name}' cx-if-value='test'><h1>Hello</h1><br/><!-- hello --><span id='stillhere'>Rah!</span></div></html>";
       parxer({
         plugins: [
-          require('../Plugins').If
+          Plugins.If
         ],
       variables: {
         'environment:name':'test',
@@ -61,7 +64,7 @@ describe("If logic plugin", function() {
       var input = "<html><compoxure id='if' cx-if='${environment:name}' cx-if-value='test'><h1>Hello</h1><br/><!-- hello --><span id='stillhere'>Rah!</span></compoxure></html>";
       parxer({
         plugins: [
-          require('../Plugins').If
+          Plugins.If
         ],
       variables: {
         'environment:name':'test',
@@ -77,8 +80,8 @@ describe("If logic plugin", function() {
       var input = "<html><div id='if' cx-if='${server:name}' cx-if-value='http://www.google.com'><div cx-url='${server:name}'></div></div></html>";
       parxer({
         plugins: [
-          require('../Plugins').If,
-          require('../Plugins').Url(function(fragment, next) { next(null, fragment.attribs['cx-url']) })
+          Plugins.If,
+          Plugins.Url(function(fragment, next) { next(null, fragment.attribs['cx-url']) })
         ],
       variables: {
         'server:name':'http://www.google.com'

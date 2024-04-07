@@ -1,8 +1,8 @@
-var htmlparser = require('htmlparser2');
-var Core = require('./lib/core');
-var State = require('./lib/state');
-var voidElements = require('./lib/void');
-var _ = require('lodash');
+import { Parser } from 'htmlparser2';
+import Core from './lib/core.js';
+import State from './lib/state.js';
+import voidElements from './lib/void.js';
+import _ from 'lodash';
 
 var parxer = function(config, input, next) {
 
@@ -12,7 +12,7 @@ var parxer = function(config, input, next) {
 
     var state = State.create(config);
 
-    var parser = new htmlparser.Parser({
+    var parser = new Parser({
         onopentag: function(tagname, attribs) {
 
             state.incrementTagCounter();
@@ -91,7 +91,7 @@ var parxer = function(config, input, next) {
 
 };
 
-module.exports = {
+export default {
     parxer: parxer,
     render: Core.render
 };

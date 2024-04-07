@@ -1,12 +1,15 @@
 'use strict';
 
-var expect = require('expect.js');
-var parxer = require('..').parxer;
-var render = require('..').render;
-var cheerio = require('cheerio');
-var fs = require('fs');
+import expect from 'expect.js';
+import pxr from '../index.js';
+import cheerio from 'cheerio';
+import fs from 'fs';
+import Plugins from '../Plugins.js';
 
 describe("Core html parsing", function() {
+
+  const parxer = pxr.parxer;
+  const render = pxr.render;
 
   it('should parse a valid html document unchanged', function(done) {
       var input = "<html></html>";
@@ -29,7 +32,7 @@ describe("Core html parsing", function() {
       var input = "<html><div id='test' cx-test='${environment:name}'></div></html>";
       parxer({
         plugins: [
-          require('../Plugins').Test
+          Plugins.Test
         ],
       variables: {
         'environment:name':'test'

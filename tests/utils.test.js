@@ -1,7 +1,7 @@
 'use strict';
 
-var expect = require('expect.js');
-var attr = require('../lib/attr');
+import attr from '../lib/attr.js';
+import expect from 'expect.js';
 
 describe("attr", function () {
     describe('getAttrStartingWith', function () {

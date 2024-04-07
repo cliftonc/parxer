@@ -1,7 +1,13 @@
-module.exports = {
-    Url: require('./lib/plugins/url'),
-    Test: require('./lib/plugins/test'),
-    If: require('./lib/plugins/if'),
-    Direct: require('./lib/plugins/direct'),
-    DefineSlot: require('./lib/plugins/define-slot')    
+import Url from './lib/plugins/url.js';
+import Test from './lib/plugins/test.js';
+import DefineSlot from './lib/plugins/define-slot.js';
+import If from './lib/plugins/if.js';
+import Direct from './lib/plugins/direct.js';
+
+export default {
+    Url,
+    Test,
+    If,
+    Direct,
+    DefineSlot
 };

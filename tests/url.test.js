@@ -1,18 +1,21 @@
 'use strict';
 
-var expect = require('expect.js');
-var parxer = require('..').parxer;
-var render = require('..').render;
-var cheerio = require('cheerio');
-var fs = require('fs');
+import expect from 'expect.js';
+import pxr from '../index.js';
+import cheerio from 'cheerio';
+import fs from 'fs';
+import Plugins from '../Plugins.js';
 
 describe("Url parsing", function () {
+
+      const parxer = pxr.parxer;
+      const render = pxr.render;
 
     it('should parse url attributes', function (done) {
         var input = "<html><div id='url' cx-url='${server:name}'>I am some default text</div></html>";
         parxer({
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
+                Plugins.Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -28,7 +31,7 @@ describe("Url parsing", function () {
         var input = "<html><div id='url' cx-url='${server:name}'><!-- comment --><h1>I am some default text</h1><span>Hello</span></div></html>";
         parxer({
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
+                Plugins.Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -44,8 +47,8 @@ describe("Url parsing", function () {
         var input = "<html><div id='test' cx-test='${environment:name}'></div><div id='url' cx-url='${server:name}'>I am some default text</div></html>";
         parxer({
             plugins: [
-                require('../Plugins').Test,
-                require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
+                Plugins.Test,
+                Plugins.Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
             ],
             variables: {
                 'server:name': 'http://www.google.com',
@@ -64,7 +67,7 @@ describe("Url parsing", function () {
         parxer({
             prefix: 'data-my-',
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['data-my-url']) })
+                Plugins.Url(function (fragment, next) { next(null, fragment.attribs['data-my-url']) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -81,7 +84,7 @@ describe("Url parsing", function () {
         parxer({
             parserTimeout: 20,
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { setTimeout(function () { next(null, fragment.attribs['cx-url']) }, 40); })
+                Plugins.Url(function (fragment, next) { setTimeout(function () { next(null, fragment.attribs['cx-url']) }, 40); })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -99,7 +102,7 @@ describe("Url parsing", function () {
             timeout: 100,
             showErrors: true,
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
+                Plugins.Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -115,7 +118,7 @@ describe("Url parsing", function () {
         var input = "<html><div id='url'><div cx-replace-outer='true' cx-url='${server:name}'>I am some default text</div></div></html>";
         parxer({
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
+                Plugins.Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -131,7 +134,7 @@ describe("Url parsing", function () {
         var input = "<html><div id='url'><compoxure cx-url='${server:name}'>I am some default text</compoxure></div></html>";
         parxer({
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
+                Plugins.Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -149,7 +152,7 @@ describe("Url parsing", function () {
             timeout: 100,
             showErrors: false,
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
+                Plugins.Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -167,7 +170,7 @@ describe("Url parsing", function () {
             timeout: 100,
             showErrors: false,
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
+                Plugins.Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -186,7 +189,7 @@ describe("Url parsing", function () {
             timeout: 100,
             showErrors: false,
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
+                Plugins.Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -205,7 +208,7 @@ describe("Url parsing", function () {
             timeout: 100,
             showErrors: false,
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
+                Plugins.Url(function (fragment, next) { setTimeout(function () { next('Arrghh'); }, 20) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -221,7 +224,7 @@ describe("Url parsing", function () {
         var input = "<html><div id='url' cx-url='${server:name}'>I am some default text</div></html>";
         parxer({
             plugins: [
-                require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
+                Plugins.Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
             ],
             variables: {
                 'server:name': 'http://www.google.com'
@@ -237,7 +240,7 @@ describe("Url parsing", function () {
             var input = "<html><div id='url' cx-url-1='${server:name}' cx-url-2='${server:name2}' cx-strategy='first-non-empty'>I am some default text</div></html>";
             parxer({
                 plugins: [
-                    require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
+                    Plugins.Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
                 ],
                 variables: {
                     'server:name': 'http://www.abc.com',
@@ -254,7 +257,7 @@ describe("Url parsing", function () {
             var input = "<html><div id='url' cx-url-1='${server:name}' cx-url-2='${server:name2}'>I am some default text</div></html>";
             parxer({
                 plugins: [
-                    require('../Plugins').Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
+                    Plugins.Url(function (fragment, next) { next(null, fragment.attribs['cx-url']) })
                 ],
                 variables: {
                     'server:name': 'http://www.abc.com',
@@ -275,7 +278,7 @@ describe("Url parsing", function () {
             };
             parxer({
                 plugins: [
-                    require('../Plugins').Url(function (fragment, next) { next(null, contents[fragment.attribs['cx-url']]) })
+                    Plugins.Url(function (fragment, next) { next(null, contents[fragment.attribs['cx-url']]) })
                 ],
                 variables: {
                     'server:name': 'http://www.abc.com',
@@ -296,7 +299,7 @@ describe("Url parsing", function () {
             };
             parxer({
                 plugins: [
-                    require('../Plugins').Url(function (fragment, next) { next(null, contents[fragment.attribs['cx-url']]) })
+                    Plugins.Url(function (fragment, next) { next(null, contents[fragment.attribs['cx-url']]) })
                 ],
                 variables: {
                     'server:name': 'http://www.abc.com',

@@ -1,17 +1,21 @@
 'use strict';
 
-var expect = require('expect.js');
-var parxer = require('..').parxer;
-var render = require('..').render;
-var cheerio = require('cheerio');
+import expect from 'expect.js';
+import pxr from '../index.js';
+import cheerio from 'cheerio';
+import fs from 'fs';
+import Plugins from '../Plugins.js';
 
 describe("Define slot parsing", function() {
+
+  const parxer = pxr.parxer;
+  const render = pxr.render;
 
   it('should parse define slot attributes and insert the content', function(done) {
       var input = "<html><div id='library'><div cx-define-slot='hello'></div></div></html>";
       parxer({
         plugins: [
-          require('../Plugins').DefineSlot(function(fragment, next) { next(null, fragment.attribs['cx-define-slot']) })
+          Plugins.DefineSlot(function(fragment, next) { next(null, fragment.attribs['cx-define-slot']) })
         ],
         cdn: {
           url: 'http://base.url.com/'
@@ -33,7 +37,7 @@ describe("Define slot parsing", function() {
       var input = "<html><div id='library'><div cx-replace-outer cx-define-slot='hello'></div></div></html>";
       parxer({
         plugins: [
-          require('../Plugins').DefineSlot(function(fragment, next) { next(null, fragment.attribs['cx-define-slot']) })
+          Plugins.DefineSlot(function(fragment, next) { next(null, fragment.attribs['cx-define-slot']) })
         ],
         cdn: {
           url: 'http://base.url.com/'
@@ -55,7 +59,7 @@ describe("Define slot parsing", function() {
       var input = "<html><div id='library'><compoxure cx-define-slot='hello'>xxx</compoxure></div></html>";
       parxer({
         plugins: [
-          require('../Plugins').DefineSlot(function(fragment, next) { next(null, fragment.attribs['cx-define-slot']) })
+          Plugins.DefineSlot(function(fragment, next) { next(null, fragment.attribs['cx-define-slot']) })
         ],
         cdn: {
           url: 'http://base.url.com/'
