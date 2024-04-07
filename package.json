@@ -35,13 +35,8 @@
     "expect.js": "~0.3.1",
     "istanbul": "^0.4.5",
     "jshint": "^2.5.6",
-    "mocha": "^10.4.0",
-    "precommit-hook": "^3.0.0"
-  },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
+    "mocha": "^10.4.0"
+  },  
   "semistandard": {
     "ignore": [
       "**/hogan.js/**",
