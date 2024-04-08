@@ -1,16 +1,12 @@
 'use strict';
 
 import expect from 'expect.js';
-import pxr from '../index.js';
+import { parxer, render } from '../index.js';
 import cheerio from 'cheerio';
 import fs from 'fs';
 import Plugins from '../Plugins.js';
 
 describe("If logic plugin", function() {
-
-  const parxer = pxr.parxer;
-  const render = pxr.render;
-
   it('should parse if attributes and retain block if true', function(done) {
       var input = "<html><div id='if' cx-if='${server:name}' cx-if-value='http://www.google.com'><h1>Hello</h1><span id='stillhere'>Rah!</span></div></html>";
       parxer({

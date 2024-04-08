@@ -91,7 +91,5 @@ var parxer = function(config, input, next) {
 
 };
 
-export default {
-    parxer: parxer,
-    render: Core.render
-};
+const render = Core.render;
+export { parxer, render };

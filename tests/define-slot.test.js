@@ -1,16 +1,12 @@
 'use strict';
 
 import expect from 'expect.js';
-import pxr from '../index.js';
+import { parxer, render } from '../index.js';
 import cheerio from 'cheerio';
 import fs from 'fs';
 import Plugins from '../Plugins.js';
 
 describe("Define slot parsing", function() {
-
-  const parxer = pxr.parxer;
-  const render = pxr.render;
-
   it('should parse define slot attributes and insert the content', function(done) {
       var input = "<html><div id='library'><div cx-define-slot='hello'></div></div></html>";
       parxer({

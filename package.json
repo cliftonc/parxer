@@ -1,6 +1,6 @@
 {
   "name": "pxr",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "HTML transformation library built on top of HTMLParser2, used by Compoxure.",
   "main": "index.js",
   "type": "module",

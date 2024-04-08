@@ -1,16 +1,12 @@
 'use strict';
 
 import expect from 'expect.js';
-import pxr from '../index.js';
+import { parxer, render } from '../index.js';
 import cheerio from 'cheerio';
 import fs from 'fs';
 import Plugins from '../Plugins.js';
 
 describe("Url parsing", function () {
-
-      const parxer = pxr.parxer;
-      const render = pxr.render;
-
     it('should parse url attributes', function (done) {
         var input = "<html><div id='url' cx-url='${server:name}'>I am some default text</div></html>";
         parxer({

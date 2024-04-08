@@ -1,16 +1,12 @@
 'use strict';
 
 import expect from 'expect.js';
-import pxr from '../index.js';
+import { parxer, render } from '../index.js';
 import cheerio from 'cheerio';
 import fs from 'fs';
 import Plugins from '../Plugins.js';
 
 describe("Core html parsing", function() {
-
-  const parxer = pxr.parxer;
-  const render = pxr.render;
-
   it('should parse a valid html document unchanged', function(done) {
       var input = "<html></html>";
       parxer({}, input, function(err, fragmentCount, data) {
